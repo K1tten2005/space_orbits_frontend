@@ -1,0 +1,30 @@
+.orbit-card {
+    background-color: white;
+    border: 1px solid #ddd;
+    width: 400px;
+    padding: 20px;
+    text-align: center;
+    margin: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.orbit-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.orbit-card img {
+    height: 160px;
+    width: 230px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.orbit-card h3 {
+    margin: 15px 0 10px;
+}
+
+.orbit-card p {
+    font-size: 14px;
+    color: #555;
+}

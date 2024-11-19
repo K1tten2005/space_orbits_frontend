@@ -5,6 +5,15 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 10px 50px;
+    text-decoration: none;
+}
+
+.nav-link {
+    text-decoration: none; /* Убираем подчеркивание */
+    color: white; /* Цвет текста */
+}
+.nav-links .nav-link {
+    margin-right: 10px; /* Отступ между кнопками */
 }
 
 .logo {

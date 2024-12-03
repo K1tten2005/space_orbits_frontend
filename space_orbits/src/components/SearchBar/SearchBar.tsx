@@ -1,23 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { setHeight } from '../../slices/orbitsSlice';
 import './SearchBar.css';
 
-interface SearchBarProps {
-    orbitHeight: string;
-    setOrbitHeight: React.Dispatch<React.SetStateAction<string>>;
-    onKeyDown: (event: React.KeyboardEvent<HTMLInputElement>) => void;
-}
+const SearchBar: React.FC = () => {
+    const [inputValue, setInputValue] = useState<string>('');
+    const dispatch = useDispatch();
 
-const SearchBar: React.FC<SearchBarProps> = ({ orbitHeight, setOrbitHeight, onKeyDown }) => {
-    console.log("Current orbitHeight:", orbitHeight);  // Отладочное сообщение
+    const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            dispatch(setHeight(inputValue));
+        }
+    };
+
     return (
         <div className="search-cart-container">
             <form>
-                <input 
-                    type="text" 
-                    placeholder="Поиск орбиты по высоте..." 
-                    value={orbitHeight} 
-                    onChange={(e) => setOrbitHeight(e.target.value)} 
-                    onKeyDown={onKeyDown} // Attach onKeyDown here
+                <input  
+                    type="text"
+                    placeholder="Поиск орбиты по высоте..."
+                    value={inputValue}
+                    onChange={(e) => setInputValue(e.target.value)}
+                    onKeyDown={handleKeyDown}
                 />
             </form>
         </div>

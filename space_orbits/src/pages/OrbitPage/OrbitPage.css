@@ -3,29 +3,61 @@
     align-items: center;
     justify-content: center;
     margin-top: 50px;
+    flex-wrap: wrap; /* Для мобильных устройств элементы располагаются в несколько строк */
+}
+
+.orbit-image {
+    display: flex; /* Центрация изображения внутри контейнера */
+    justify-content: center;
+    width: 100%; /* Убедимся, что контейнер занимает всю ширину */
 }
 
 .orbit-image img {
     width: 400px;
     height: auto;
     border-radius: 10px;
-    margin-right: 10px;
-    margin-left: 250px;
+    margin: 0 auto; /* Убираем боковые отступы для центрирования */
 }
 
-.orbit-info {
-    text-align: start;
+/* Адаптивность */
+@media (max-width: 1024px) {
+    .orbit-image img {
+        width: 350px;
+    }
+
+    .orbit-info {
+        text-align: center; /* Центрирование текста */
+        margin-left: 0; /* Убираем отступ */
+    }
 }
 
-.orbit-info h2 {
-    text-align: start;
-    font-size: 24px;
-    margin-bottom: 10px;
+@media (max-width: 768px) {
+    .orbit-details {
+        flex-direction: column; /* Элементы располагаются в столбик */
+        text-align: center;
+    }
+
+    .orbit-image img {
+        width: 100%; /* Изображение занимает всю ширину контейнера */
+        max-width: 300px; /* Максимальная ширина для изображения */
+    }
+
+    .orbit-info {
+        margin-top: 20px; /* Отступ сверху */
+    }
 }
 
-.orbit-info p {
-    font-size: 20px;
-    margin-right: 350px;
-    line-height: 1.3;
-    color: #555;
+@media (max-width: 480px) {
+    .orbit-image img {
+        width: 90%; /* Изображение занимает 90% ширины контейнера */
+        max-width: none; /* Убираем ограничения по максимальной ширине */
+    }
+
+    .orbit-info h2 {
+        font-size: 22px; /* Уменьшение шрифта для меньших экранов */
+    }
+
+    .orbit-info p {
+        font-size: 18px; /* Уменьшение шрифта для мобильных экранов */
+    }
 }

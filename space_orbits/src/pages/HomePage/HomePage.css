@@ -9,7 +9,7 @@
     position: relative;
     overflow: hidden;
 }
-  
+
 .background-video {
     position: absolute;
     top: 0;
@@ -46,10 +46,6 @@
     margin-bottom: 25px;
 }
 
-.btn-transparent {
-    font-size: 16px;
-}
-
 .home-page-custom-footer {
     display: flex;
     align-items: center;
@@ -60,4 +56,40 @@
     bottom: 0;
     left: 0;
     right: 0;
+}
+
+/* Адаптивность */
+@media (max-width: 1024px) {
+    .content {
+        margin-left: 50px;
+        margin-right: 50px;
+    }
+
+    .content h1 {
+        font-size: 35px; /* Уменьшаем размер заголовка */
+    }
+
+    .content p {
+        font-size: 14px; /* Уменьшаем размер текста */
+    }
+}
+
+@media (max-width: 768px) {
+    .content h1 {
+        font-size: 28px; /* Еще меньше заголовок для мобильных */
+    }
+
+    .content p {
+        font-size: 12px; /* Уменьшаем текст на мобильных */
+    }
+}
+
+@media (max-width: 480px) {
+    .content h1 {
+        font-size: 22px; /* Меньший размер заголовка для маленьких экранов */
+    }
+
+    .content p {
+        font-size: 12px; /* Меньший текст */
+    }
 }

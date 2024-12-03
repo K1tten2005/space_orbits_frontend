@@ -27,7 +27,6 @@ function BasicNavbar() {
               menuVariant="light"
             >
               <NavDropdown.Item as={Link} to="/orbits">Орбиты</NavDropdown.Item>
-              <NavDropdown.Item as={Link} to="/">Домой</NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>

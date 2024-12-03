@@ -4,7 +4,7 @@ export const ORBITS_MOCK: OrbitResult = {
     orbits:[
         {
             'id': 1,
-            'image': 'http://127.0.0.1:9000/orbits/1.jpg',
+            'image': "/images/default_image.jpg",
             'height': 200,
             'short_description': 'Является частью низкой околоземной орбиты (160 - 2000 км).',
             'type': 'НОО(низкая околоземная орбита)',
@@ -13,7 +13,7 @@ export const ORBITS_MOCK: OrbitResult = {
         },
         {
             'id': 2,
-            'image': 'http://127.0.0.1:9000/orbits/1.jpg',
+            'image': "/images/default_image.jpg",
             'height': 400,
             'short_description': 'Является частью низкой околоземной орбиты (160 - 2000 км).',
             'type': 'НОО (низкая околоземная орбита)',
@@ -22,7 +22,7 @@ export const ORBITS_MOCK: OrbitResult = {
         },
         {
             'id': 3,
-            'image': 'http://127.0.0.1:9000/orbits/1.jpg',
+            'image': "/images/default_image.jpg",
             'height': 2000,
             'short_description': 'Является частью средней околоземной орбиты (2000 - 35786 км).',
             'type': 'СОО (средняя околоземная орбита)',
@@ -31,7 +31,7 @@ export const ORBITS_MOCK: OrbitResult = {
         },
         {
             'id': 4,
-            'image': 'http://127.0.0.1:9000/orbits/1.jpg',
+            'image': "/images/default_image.jpg",
             'height': 35786,
             'short_description': 'Является частью геостационарной орбиты (около 35786 км).',
             'type': 'ГО (геостационарная орбита)',

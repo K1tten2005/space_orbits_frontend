@@ -1,21 +1,35 @@
+/* Стиль для хедера */
 header {
     background-color: #000;
     color: white;
     display: flex;
+    width: 100%;
     justify-content: space-between;
     align-items: center;
     padding: 10px 50px;
     text-decoration: none;
+    position: fixed;
+    top: 0; /* Чтобы хедер располагался вверху страницы */
+    left: 0;
+    z-index: 1000; /* Для обеспечения того, чтобы хедер был поверх других элементов */
 }
 
+/* Стиль для контента, который должен быть ниже хедера */
+main {
+    margin-top: 70px; /* Добавляем отступ, чтобы контент не перекрывался хедером */
+}
+
+/* Стиль для ссылки в навигации */
 .nav-link {
-    text-decoration: none; /* Убираем подчеркивание */
-    color: white; /* Цвет текста */
-}
-.nav-links .nav-link {
-    margin-right: 10px; /* Отступ между кнопками */
+    text-decoration: none;
+    color: white;
 }
 
+.nav-links .nav-link {
+    margin-right: 10px;
+}
+
+/* Логотип */
 .logo {
     display: flex;
     align-items: center;

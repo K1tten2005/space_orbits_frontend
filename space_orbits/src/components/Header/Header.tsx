@@ -9,7 +9,7 @@ const Header: React.FC = () => {
         <header>
             <Link to="/" className="orbit-link">
                 <div className="logo">
-                    <img src="http://127.0.0.1:9000/orbits/logo.png" alt="Логотип Космоорбит" />
+                    <img src="./logo.png" alt="Логотип Космоорбит" />
                     <h1>Космоорбит</h1>
                 </div>
             </Link>

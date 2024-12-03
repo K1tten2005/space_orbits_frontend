@@ -1,11 +1,11 @@
 import React from 'react';
 import './OrbitCard.css';
-const default_image = "/images/default_image.jpg"
+const default_image = './images/default_image.jpg'
 
 interface OrbitCardProps {
     orbit: {
         id: number;
-        image: string;
+        image: string | null;
         height: number;
         short_description: string;
     };

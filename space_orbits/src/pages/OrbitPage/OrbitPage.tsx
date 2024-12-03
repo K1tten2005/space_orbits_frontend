@@ -5,6 +5,7 @@ import { Orbit, getOrbitById } from '../../modules/spaceOrbitsAPI';
 import './OrbitPage.css';
 import { BreadCrumbs } from "../../components/BreadCrumbs/BreadCrumbs";
 import { ROUTES, ROUTE_LABELS } from "../../Routes";
+const default_image = "../images/default_image.jpg"
 
 const OrbitPage: React.FC = () => {
     const [pageData, setPageData] = useState<Orbit | null>(null); // Инициализация как null
@@ -41,7 +42,7 @@ const OrbitPage: React.FC = () => {
         />
             <div className="orbit-details">
                 <div className="orbit-image">
-                    <img src={pageData.image} alt={`Орбита ${pageData.height} км`} />
+                    <img src={pageData.image || default_image} alt={`Орбита ${pageData.height} км`} />
                 </div>
                 <div className="orbit-info">
                     <h2>Высота {pageData.height} км</h2>

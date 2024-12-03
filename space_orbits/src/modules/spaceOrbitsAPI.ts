@@ -4,7 +4,7 @@ export interface Orbit {
     type: string;
     full_description: string;
     short_description: string;
-    image: string;
+    image: string | null;
   }
 
   

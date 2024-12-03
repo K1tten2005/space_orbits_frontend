@@ -8,13 +8,13 @@
     "orientation": "portrait-primary",
     "screenshots": [
   {
-    "src": "/screenshot-wide.png",
+    "src": "./screenshot-wide.png",
     "sizes": "1920x925",
     "type": "image/png",
     "form_factor": "wide"
   },
   {
-    "src": "/screenshot-mobile.png",
+    "src": "./screenshot-mobile.png",
     "sizes": "451x797",
     "type": "image/png",
     "form_factor": "narrow"
@@ -22,25 +22,25 @@
 ],
     "icons": [
         {
-            "src": "/logo.png",
+            "src": "./logo.png",
             "type": "image/png",
             "sizes": "512x512",
             "purpose": "any"
         },
         {
-            "src": "/logo.png",
+            "src": "./logo.png",
             "type": "image/png",
             "sizes": "512x512",
             "purpose": "maskable"
         },
         {
-            "src": "/web-app-manifest-192x192.png",
+            "src": "./web-app-manifest-192x192.png",
             "type": "image/png",
             "sizes": "192x192",
             "purpose": "maskable"
         },
         {
-            "src": "/web-app-manifest-512x512.png",
+            "src": "./web-app-manifest-512x512.png",
             "type": "image/png",
             "sizes": "512x512",
             "purpose": "maskable"

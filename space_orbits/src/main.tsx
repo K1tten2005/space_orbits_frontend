@@ -16,7 +16,7 @@ createRoot(document.getElementById('root')!).render(
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker
-    .register("/serviceWorker.js")
+    .register("./serviceWorker.js")
       .then(() => console.log('Service worker registered'))
       .catch((err) => console.log('Service worker not registered', err));
   });

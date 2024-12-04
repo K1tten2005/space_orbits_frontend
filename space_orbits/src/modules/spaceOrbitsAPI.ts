@@ -13,7 +13,7 @@ export interface Orbit {
   }
 
   export const getOrbitsByHeight = async (height = ''): Promise<OrbitResult> => {
-    const url = `/api/orbits/?orbit_height=${encodeURIComponent(height)}`;
+    const url = `http://127.0.0.1:8000/api/orbits/?orbit_height=${encodeURIComponent(height)}`;
     return fetch(url)
         .then((response) => response.json())
         .then((data) => ({
@@ -21,8 +21,7 @@ export interface Orbit {
         }));
 };
 
-  export const getOrbitById = async (orbitId: number | string): Promise<Orbit> => {
-    const url = `/api/orbits/${encodeURIComponent(orbitId)}`;
-    return fetch(url)
-      .then((response) => response.json());
-  };
+export const getOrbitById = async (orbitId: number | string): Promise<Orbit> => {
+    const url = `http://127.0.0.1:8000/api/orbits/${encodeURIComponent(orbitId)}`;
+    return fetch(url).then((response) => response.json());
+};

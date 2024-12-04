@@ -4,12 +4,13 @@ import { Navbar, Nav, Container } from 'react-bootstrap';
 import './Header.css';
 import '../Navbar/Navbar';
 
+
 const Header: React.FC = () => {
     return (
         <header>
             <Link to="/" className="orbit-link">
                 <div className="logo">
-                    <img src="./logo.png" alt="Логотип Космоорбит" />
+                    <img src="./space_orbits_frontend/logo.png" alt="Логотип Космоорбит" />
                     <h1>Космоорбит</h1>
                 </div>
             </Link>

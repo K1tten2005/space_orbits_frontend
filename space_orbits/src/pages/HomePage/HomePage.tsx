@@ -12,7 +12,7 @@ export const HomePage: FC = () => {
   return (
     <div className="home">
       <video className="background-video" autoPlay loop muted>
-        <source src="/space_orbits_frontend/videos/background.mp4" type="video/mp4" />
+        <source src="./space_orbits_frontend/videos/background.mp4" type="video/mp4" />
         Ваш браузер не поддерживает видео.
       </video>
       <div className="overlay" />

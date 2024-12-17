@@ -20,6 +20,8 @@ const Header: React.FC = () => {
                         <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className="me-auto nav-links">
                                 <Nav.Link as={Link} to="/orbits" className="nav-link">Орбиты</Nav.Link>
+                                <Nav.Link as={Link} to="/login">Войти</Nav.Link>
+                                <Nav.Link as={Link} to="/">Домой</Nav.Link>
                             </Nav>
                         </Navbar.Collapse>
                     </Container>

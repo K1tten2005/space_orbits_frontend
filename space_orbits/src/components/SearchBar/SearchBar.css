@@ -16,3 +16,38 @@ input[type="text"] {
     margin-right: 20px;
 }
 
+.cart {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .cart img {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .cart.inactive {
+    opacity: 0.5;
+    pointer-events: none; /* Делает корзину неактивной для кликов */
+  }
+  
+  .cart.clickable {
+    cursor: pointer;
+  }
+  
+  .badge {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background-color: #000000;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1;
+    display: inline-block;
+    text-align: center;
+    min-width: 20px;
+  }
+  

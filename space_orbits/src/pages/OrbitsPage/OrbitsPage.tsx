@@ -8,72 +8,99 @@ import './OrbitsPage.css';
 import { BreadCrumbs } from "../../components/BreadCrumbs/BreadCrumbs";
 import { ROUTES, ROUTE_LABELS } from "../../Routes";
 
-const OrbitsPage: React.FC = () => {
-    const [orbits, setOrbits] = useState<Orbit[]>(ORBITS_MOCK.orbits);
-    const [orbitHeight, setOrbitHeight] = useState<string>('');
-    const [loading, setLoading] = useState(false);
+export const getCookie = (name: string): string | null => {
+    const nameEQ = name + "=";
+    const ca = document.cookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) === ' ') c = c.substring(1, c.length); // Убираем пробелы
+        if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+};
 
-    // Fetch initial data from the database when the component mounts
+const OrbitsPage: React.FC = () => {
+    const [orbits, setOrbits] = useState<Orbit[]>([]); // Список орбит
+    const [orbitHeight, setOrbitHeight] = useState<string>(''); // Высота для фильтрации
+    const [loading, setLoading] = useState(false); // Индикатор загрузки
+    const [isUserLoggedIn, setIsUserLoggedIn] = useState<boolean>(false); // Проверка авторизации
+    const [userServicesCount, setUserServicesCount] = useState<number>(0); // Количество услуг в корзине
+    const [draftTransitionId, setDraftTransitionId] = useState<number | null>(null); // ID черновой заявки
+
+    // Проверка авторизации через cookies
     useEffect(() => {
-        const fetchOrbits = async () => {
-            setLoading(true);
-            try {
-                const response = await getOrbitsByHeight(''); // Fetch all orbits or modify as needed
-                setOrbits(response.orbits);
-            } catch (error) {
-                console.error('Error fetching orbits:', error);
-                // Fall back to mock data if there is an error
-                setOrbits(ORBITS_MOCK.orbits);
-            } finally {
-                setLoading(false);
-            }
+        const checkLoginStatus = () => {
+            const loggedIn = !!getCookie("session_id"); // Проверяем наличие session_id в cookies
+            setIsUserLoggedIn(loggedIn);
         };
 
-        fetchOrbits();
+        checkLoginStatus();
     }, []);
 
-    // This function performs the search using orbitHeight
-    const handleSearch = () => {
+    // Получение данных корзины
+    useEffect(() => {
+        if (isUserLoggedIn) {
+            const fetchUserCartDetails = async () => {
+                try {
+                    const response = await fetch('/api/orbits'); // Эндпоинт для данных корзины
+                    const data = await response.json();
+                    setUserServicesCount(data.orbits_to_transfer || 0); // Количество услуг в корзине
+                    setDraftTransitionId(data.draft_transition); // ID черновой заявки
+                } catch (error) {
+                    console.error("Ошибка получения данных корзины:", error);
+                    setUserServicesCount(0); // Если ошибка, устанавливаем 0
+                    setDraftTransitionId(null); // Если ошибка, сбрасываем ID черновика
+                }
+            };
+
+            fetchUserCartDetails();
+        }
+    }, [isUserLoggedIn]); // Запрос выполняется только при авторизации
+
+    // Функция для получения орбит с фильтрацией
+    const fetchOrbits = async () => {
         setLoading(true);
-
-        getOrbitsByHeight(orbitHeight)
-            .then((response) => {
-                setOrbits(response.orbits);
-            })
-            .catch(() => {
-                // If there is an error during search, fallback to mock data
-                setOrbits(
-                    ORBITS_MOCK.orbits.filter((item) =>
-                        item.height.toString().startsWith(orbitHeight)
-                    )
-                );
-            })
-            .finally(() => {
-                setLoading(false);
-            });
-    };
-
-    // Handle Enter key press for search
-    const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-        if (event.key === 'Enter') {
-            event.preventDefault(); // Prevents form submission
-            handleSearch();
+        try {
+            const response = await getOrbitsByHeight(orbitHeight); // Запрос на сервер
+            setOrbits(response.orbits); // Устанавливаем данные из БД
+        } catch (error) {
+            console.error('Error fetching orbits:', error);
+            setOrbits(ORBITS_MOCK.orbits); // Используем мок данные при ошибке
+        } finally {
+            setLoading(false);
         }
     };
 
+    // Обработка нажатия Enter
+    const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+        if (event.key === 'Enter') {
+            event.preventDefault(); // Предотвращаем стандартное поведение
+            fetchOrbits(); // Выполняем поиск
+        }
+    };
+
+    // Первоначальный запрос на получение всех орбит
+    useEffect(() => {
+        fetchOrbits(); // Загружаем все орбиты при загрузке страницы
+    }, []);
+
     return (
         <main>
-            <SearchBar 
-                orbitHeight={orbitHeight} 
-                setOrbitHeight={setOrbitHeight} 
-                onKeyDown={handleKeyDown} // Pass the handler here
+            <SearchBar
+                orbitHeight={orbitHeight}
+                setOrbitHeight={setOrbitHeight}
+                onKeyDown={handleKeyDown} // Передаём обработчик Enter
+                servicesCount={userServicesCount} // Количество услуг в корзине
+                isLoggedIn={isUserLoggedIn} // Статус авторизации
+                draftTransitionId={draftTransitionId} // ID черновой заявки
             />
+
             <h2>Орбиты</h2>
             <BreadCrumbs
-          crumbs={[
-            { label: ROUTE_LABELS.ORBITS, path: ROUTES.ORBITS },
-          ]}
-        />
+                crumbs={[
+                    { label: ROUTE_LABELS.ORBITS, path: ROUTES.ORBITS },
+                ]}
+            />
             <div className="orbit-container">
                 {loading ? (
                     <p>Loading...</p>
@@ -84,7 +111,7 @@ const OrbitsPage: React.FC = () => {
                         </Link>
                     ))
                 ) : (
-                    <p>No orbits found.</p> // Message when no orbits are found
+                    <p>No orbits found.</p>
                 )}
             </div>
         </main>

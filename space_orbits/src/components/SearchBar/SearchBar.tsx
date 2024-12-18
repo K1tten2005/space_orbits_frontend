@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { setHeight } from '../../slices/orbitsSlice';
+import { setHeight } from '../../store/slices/orbitsSlice';
 import './SearchBar.css';
 
 const SearchBar: React.FC = () => {

@@ -36,9 +36,145 @@ h2 {
     transition: transform 0.2s;
 }
 
+.badge {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background-color: #000000;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1;
+    display: inline-block;
+    text-align: center;
+    min-width: 20px;
+}
+
+.cart.inactive {
+opacity: 0.5;
+pointer-events: none; /* Делает корзину неактивной для кликов */
+}
+
+.cart.clickable {
+cursor: pointer;
+}
+  
+
 .orbit-card img:hover {
     transform: scale(1.05); /* Небольшой эффект увеличения */
 }
+
+.cards {
+    padding: 0 2rem; /* Добавляем отступы слева и справа */
+    margin-left: 80px; /* Центрируем карточки в пределах контейнера */
+    max-width: 100%; /* Ограничиваем максимальную ширину для эстетики */
+}
+
+.cards .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; /* Карточки выравниваются по левому краю */
+    gap: 1rem; /* Расстояние между карточками */
+}
+
+.cards .col {
+    flex: 1 1 auto;
+    max-width: 100%; /* Ограничивает ширину */
+    text-align: center;
+}
+
+.search-cart {
+    margin-top: 2rem; /* Отступ сверху */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-truck, .orders-button {
+    position: relative; /* Убедитесь, что элементы находятся в потоке документа */
+    z-index: 1; /* Убедитесь, что хэдер находится выше остальных элементов */
+}
+
+.parts-data {
+    padding-top: 4rem; /* Добавляем отступ сверху для всех элементов внутри */
+}
+
+.truck {
+    position: relative;
+    width: 50px; /* Установите фиксированную ширину */
+    height: 50px; /* Установите фиксированную высоту */
+    margin: auto;
+}
+
+.truck-bg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: transparent; /* Или задайте другой фон */
+    border-radius: 50%;
+}
+
+.cart-icon {
+    width: 100%; /* Иконка займет весь размер родительского элемента */
+    max-width: 40px; /* Ограничьте максимальный размер */
+    height: auto;
+}
+
+.search-cart-container {
+    display: flex; /* Устанавливаем flex-контейнер */
+    justify-content: space-between; /* Размещаем элементы по краям */
+    align-items: center; /* Выравниваем элементы по вертикали */
+}
+
+.cart-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px; /* Задаем фиксированную ширину для корзины */
+    height: 50px; /* Задаем фиксированную высоту */
+}
+
+.truck-bg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border-radius: 50%; /* Округляем фон иконки */
+}
+
+.cart-icon {
+    width: 100%; /* Иконка занимает всю ширину родительского элемента */
+    max-width: 40px; /* Ограничиваем максимальный размер */
+    height: auto; /* Сохраняем пропорции */
+}
+
+.badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #000000;
+    color: white;
+    padding: 5px;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1;
+    min-width: 20px;
+    text-align: center;
+}
+
+
+
+
+
+
 
 /* Адаптивность */
 @media (max-width: 1100px) {

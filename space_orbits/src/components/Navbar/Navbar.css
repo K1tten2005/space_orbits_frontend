@@ -1,14 +1,132 @@
-
-.custom-navbar {
-    background-color: #ffffff;
-  }
-.ms-auto {
-  text-decoration: none;
-
+.nav {
+  width: 100%;
+  background-color: black;
+  height: 66px;
+  padding: 10px;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1;
 }
 
-.custom-dropdown-title {
-  font-weight: bold;
-  color: white;
-  font-size: 18px;
+.nav__icon {
+  display: flex;
+  align-items: center;
+}
+
+.nav__links {
+  display: flex;
+  gap: 0 35px;
+  margin-right: 60px;
+}
+
+.nav__link {
+  text-decoration: none;
+  color: #fff;
+  position: relative;
+}
+
+.nav__link.active::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  left: 0;
+  bottom: -7px;
+  background-color: #ffffff;
+}
+
+.nav__mobile-wrapper {
+  display: none;
+  height: 30px;
+  width: 30px;
+  margin-right: 20px;
+  transition: all .4s linear;
+  cursor: pointer;
+  position: relative;
+}
+
+.nav__mobile-target {
+  height: 2px;
+  width: 100%;
+  background-color: #fff;
+  position: relative;
+  transition: all .2s linear;
+}
+
+.nav__mobile-wrapper.active .nav__mobile-target {
+  transform: rotate(45deg);
+}
+
+.nav__mobile-target::after, .nav__mobile-target::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background-color: #fff;
+}
+
+.nav__mobile-target::after {
+  top: -7px;
+}
+
+.nav__mobile-target::before {
+  bottom: -7px;
+}
+
+.nav__mobile-wrapper.active .nav__mobile-target::after {
+  display: none;
+}
+
+.nav__mobile-wrapper.active .nav__mobile-target::before {
+  top: 0;
+  transform: rotate(90deg);
+}
+
+.nav__mobile-menu {
+  position: absolute;
+  top: 30px;
+  right: 0;
+  flex-direction: column;
+  gap: 15px 0;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  min-width: 150px;
+  border-radius: 10px;
+  display: none;
+}
+
+.nav__mobile-wrapper.active .nav__mobile-menu {
+  display: flex;
+}
+.nav__mobile-menu .nav__link {
+  color: #000; 
+}
+
+.nav__mobile-wrapper.active .nav__mobile-menu {
+  display: flex;
+}
+
+@media (max-width: 545px) {
+  .nav__wrapper {
+    flex-direction: row-reverse;
+  }
+
+  .nav__link.active::after {
+    background-color: #000000;
+  }
+
+  .nav__links {
+    display: none;
+  }
+
+  .nav__mobile-wrapper {
+    display: flex;
+    align-items: center;
+  }
 }

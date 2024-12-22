@@ -22,11 +22,6 @@ const LoginPage: React.FC = () => {
 
     return (
         <div className="login-page">
-            <header className="login-header">
-                <nav className="navbar">
-                    <h1>Space Orbits</h1>
-                </nav>
-            </header>
             <main className="login-main">
                 <div className="login-form">
                     <h2>Авторизация</h2>

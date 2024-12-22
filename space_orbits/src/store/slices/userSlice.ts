@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit"
 import {T_LoginCredentials, T_RegisterCredentials, T_User} from "../../modules/types.ts";
 import {AxiosResponse} from "axios";

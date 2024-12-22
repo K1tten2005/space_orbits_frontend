@@ -53,5 +53,5 @@ export type T_Orbit = {
   export type T_OrbitsListResponse = {
     orbits: T_Orbit[],
     draft_transition: number,
-    orbits_to_tranfer: number
+    orbits_to_transfer: number
   }

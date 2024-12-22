@@ -1,45 +1,50 @@
-/* OrbitsPage.css */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
+.custom-container {
     font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
+    padding-top: 66px;
+    min-height: 100vh; 
+    display: flex; 
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-main {
-    padding: 5px;
-    text-align: center;
-}
-
-h2 {
-    font-size: 30px;
-    text-align: center;
-}
-
-/* Стиль для контейнера орбит */
-.orbit-container {
+.head {
+    position: relative;
     display: flex;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    padding: 0 120px;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.orbit-card img {
-    width: 100%;
-    max-width: 300px;
-    height: auto;
-    border-radius: 10px;
-    transition: transform 0.2s;
+.line {
+    display: none;
 }
 
-.badge {
+.head .crumbs {
+    flex-shrink: 0;
+}
+
+.title {
+    position: absolute; 
+    left: 50%;
+    transform: translateX(-50%); 
+    margin: 0;
+    text-align: center; 
+}
+
+.orders-button {
+    position: relative;
+    margin-left: auto;
+}
+
+.disabled {
+    opacity: 0.5;
+    pointer-events: none; /* Отключает любые взаимодействия с элементом */
+  }
+  
+
+  .badge {
     position: absolute;
-    top: -5px;
-    right: -10px;
+    right: 5px;
+    top: 3px;
     background-color: #000000;
     color: white;
     padding: 5px 10px;
@@ -51,158 +56,119 @@ h2 {
     text-align: center;
     min-width: 20px;
 }
-
-.cart.inactive {
-opacity: 0.5;
-pointer-events: none; /* Делает корзину неактивной для кликов */
-}
-
-.cart.clickable {
-cursor: pointer;
-}
   
 
-.orbit-card img:hover {
-    transform: scale(1.05); /* Небольшой эффект увеличения */
+  .truck-bg {
+    height: 40px;
+    width: 50px;
+    border-radius: 4px;
+    position: relative; /* Для корректного отображения badge */
+  }
+
+.truck-icon {
+  width: 40px; /* Задайте нужную ширину */
+  height: auto; /* Сохраняет пропорции */
+  max-height: 40px; /* Ограничивает максимальную высоту */
+  object-fit: contain; /* Гарантирует правильное отображение */
 }
 
-.cards {
-    padding: 0 2rem; /* Добавляем отступы слева и справа */
-    margin-left: 80px; /* Центрируем карточки в пределах контейнера */
-    max-width: 100%; /* Ограничиваем максимальную ширину для эстетики */
-}
-
-.cards .row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start; /* Карточки выравниваются по левому краю */
-    gap: 1rem; /* Расстояние между карточками */
-}
-
-.cards .col {
-    flex: 1 1 auto;
-    max-width: 100%; /* Ограничивает ширину */
+.header-truck {
     text-align: center;
-}
-
-.search-cart {
-    margin-top: 2rem; /* Отступ сверху */
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.header-truck, .orders-button {
-    position: relative; /* Убедитесь, что элементы находятся в потоке документа */
-    z-index: 1; /* Убедитесь, что хэдер находится выше остальных элементов */
 }
 
 .parts-data {
-    padding-top: 4rem; /* Добавляем отступ сверху для всех элементов внутри */
+    min-height: 83.3vh; 
+    padding-left: 70px;
+    padding-right: 70px;
+    padding-bottom: 20px;
 }
 
-.truck {
-    position: relative;
-    width: 50px; /* Установите фиксированную ширину */
-    height: 50px; /* Установите фиксированную высоту */
-    margin: auto;
-}
-
-.truck-bg {
+.name-input {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    background-color: transparent; /* Или задайте другой фон */
-    border-radius: 50%;
+    justify-content: flex-start; /* Перемещает поле поиска влево */
 }
 
-.cart-icon {
-    width: 100%; /* Иконка займет весь размер родительского элемента */
-    max-width: 40px; /* Ограничьте максимальный размер */
-    height: auto;
-}
 
-.search-cart-container {
-    display: flex; /* Устанавливаем flex-контейнер */
-    justify-content: space-between; /* Размещаем элементы по краям */
-    align-items: center; /* Выравниваем элементы по вертикали */
-}
-
-.cart-container {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50px; /* Задаем фиксированную ширину для корзины */
-    height: 50px; /* Задаем фиксированную высоту */
-}
-
-.truck-bg {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    background-color: transparent;
-    border-radius: 50%; /* Округляем фон иконки */
-}
-
-.cart-icon {
-    width: 100%; /* Иконка занимает всю ширину родительского элемента */
-    max-width: 40px; /* Ограничиваем максимальный размер */
-    height: auto; /* Сохраняем пропорции */
-}
-
-.badge {
-    position: absolute;
-    top: -5px;
-    right: -5px;
-    background-color: #000000;
-    color: white;
-    padding: 5px;
-    border-radius: 50%;
-    font-size: 12px;
-    font-weight: bold;
-    line-height: 1;
-    min-width: 20px;
+.data h2 {
     text-align: center;
+    margin-bottom: 0px;
 }
 
-
-
-
-
-
-
-/* Адаптивность */
-@media (max-width: 1100px) {
-    .orbit-container {
-        padding: 0 40px; /* Меньший отступ для более узких экранов */
-    }
+.containerLoading {
+    filter: blur(8px);
 }
 
-@media (max-width: 768px) {
-    .orbit-container {
-        flex-direction: column; /* На мобильных устройствах элементы будут располагаться вертикально */
-        padding: 0 20px;
-    }
-
-    .orbit-link {
-        width: 100%; /* Орбиты займут всю ширину экрана */
-        margin-bottom: 20px;
-    }
+.body {
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-@media (max-width: 480px) {
-    h2 {
-        font-size: 24px; /* Меньший размер шрифта для мобильных экранов */
-    }
-
-    .orbit-link {
-        width: 100%; /* Полная ширина для орбит */
+@media (max-width: 1150px) {
+    .parts-data {
+        padding-left: 50px;
+        padding-right: 50px;
     }
 }
+@media (max-width: 770px) {
+    .head {
+        align-items: flex-start;
+        flex-direction: column;
+    }
 
+    .crumbs {
+        margin-bottom: -10px;
+    }
 
+    .line {
+        display: block;
+        width: 100%;
+    }
+
+    .line hr {
+        width: 100%;
+    }
+
+    .line hr{
+        display: block;
+    }
+
+    .title {
+        position: static;
+        transform: none;
+        margin-bottom: 10px;
+    }
+
+    .header-truck {
+        display: flex;
+        justify-content: space-between;
+    }
+    .truck {
+        position: relative;
+        display: block;
+        margin-bottom: 10px;
+    }
+    .truck-bg {
+        height: 40px;
+        width: 50px;
+        background-color: #212539;
+        border-radius: 4px;
+    }
+    .truck-icon {
+        height: 100%;
+        object-fit: cover;
+    }
+    .shipment button,
+    .shipment .pill {
+        display: none;
+    }
+}
+@media (max-width: 675px) {
+    .parts-data {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+}

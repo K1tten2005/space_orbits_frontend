@@ -1,75 +1,75 @@
 .shipment-container {
-    font-family: Arial, sans-serif;
-    padding-top: 66px;
-    min-height: 100vh; 
-    display: flex; 
-    flex-direction: column;
-    justify-content: space-between;
+  font-family: Arial, sans-serif;
+  padding-top: 66px;
+  min-height: 100vh; 
+  display: flex; 
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .no-wrap {
-  white-space: nowrap;
+white-space: nowrap;
 }
 
 
 .shipment-data {
-    min-height: 70vh; 
-    padding-left: 70px;
-    padding-right: 70px;
+  min-height: 70vh; 
+  padding-left: 70px;
+  padding-right: 70px;
 }
 
 .shipment-form {
-  margin-bottom: 10px;
-  font-family: "Inter", "Source Sans Pro", "Helvetica";
+margin-bottom: 10px;
+font-family: "Inter", "Source Sans Pro", "Helvetica";
 }
 
 .shipment-form {
-  display: flex;
-  flex-wrap: wrap;
+display: flex;
+flex-wrap: wrap;
 }
 
 .shipment-form-group {
-  display: flex;
-  align-items: center;
-  margin-right: 40px;
+display: flex;
+align-items: center;
+margin-right: 40px;
 }
 
 .shipment-form-group label {
-  margin-right: 10px;
-  font-weight: 600;
+margin-right: 10px;
+font-weight: 600;
 }
 
 .delivery-cards {
-  margin-bottom: 20px;
+margin-bottom: 20px;
 }
 
 label[for="delivery"],
 label[for="dispatch"] {
-  font-weight: normal;
+font-weight: normal;
 }
 
 .shipment-form-group input[type="radio"] {
-  margin-right: 5px;
+margin-right: 5px;
 }
 
 .shipment-form-group input[type="text"],
 .shipment-form-group input[type="date"] {
-  text-align: left;
-  height: 25px;
+text-align: left;
+height: 25px;
 }
 
 
 .shipment-buttons {
-    margin: 0px 58px 20px 58px;
+  margin: 0px 58px 20px 58px;
 }
 
 .quantity-row {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .quantity-controls input {
-    margin-left: 10px;
-    width: 60px;
-    height: 30px;
+  margin-left: 10px;
+  width: 60px;
+  height: 30px;
 }

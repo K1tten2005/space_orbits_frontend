@@ -5,7 +5,7 @@ import { Orbit, getOrbitById } from '../../modules/spaceOrbitsAPI';
 import './OrbitPage.css';
 import { BreadCrumbs } from "../../components/BreadCrumbs/BreadCrumbs";
 import { ROUTES, ROUTE_LABELS } from "../../Routes";
-const default_image = "../images/default_image.jpg"
+const default_image = '../../images/default_image.jpg'
 
 const OrbitPage: React.FC = () => {
     const [pageData, setPageData] = useState<Orbit | null>(null); // Инициализация как null

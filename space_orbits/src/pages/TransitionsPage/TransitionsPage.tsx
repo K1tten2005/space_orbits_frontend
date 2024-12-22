@@ -20,17 +20,23 @@ const TransitionsPage: FC = () => {
   const [hoveredRowId, setHoveredRowId] = useState<string | null>(null);
 
   const statusOptions = {
-    0: "Любой",
-    3: "Сформирован",
-    4: "Завершен",
-    5: "Отклонен",
+    '': "Любой",
+    'formed': "Сформирован",
+    'completed': "Завершен",
+    'rejected': "Отклонен",
   };
 
-  const formatDate = (dateString?: string) => { 
+  const formatDate = (dateString?: string) => {
     if (!dateString) return "";   
     const date = new Date(dateString); 
     return date.toLocaleDateString("ru-RU"); // Формат: день.месяц.год 
   }; 
+
+  const formatTime = (timeString?: string) => {
+    if (!timeString) return "";
+    const [hours, minutes, seconds] = timeString.split(":");
+    return `${hours}:${minutes}:${seconds || "00"}`;
+  };
 
   useEffect(() => {
     if (!isAuthenticated) {
@@ -104,16 +110,16 @@ const TransitionsPage: FC = () => {
                     <table className="shipments-table">
                         <thead>
                         <tr>
-                            <td>ID отправки</td>
+                            <td>ID перехода</td>
                             <td>Статус</td>
                             <td>Дата создания</td>
                             <td>Дата формирования</td>
-                            <td>Запланированная дата</td>
                             <td>Дата завершения</td>
                             <td>Создатель</td>
-                            <td>Склад</td>
-                            <td>Тип операции</td>
-                            <td>Номер авто</td>
+                            <td>Космический аппарат</td>
+                            <td>Запланированная дата</td>
+                            <td>Запланированное время</td>
+                            <td>Самая высокая орбита</td>
                         </tr>
                         </thead>
                         <tbody>
@@ -126,14 +132,15 @@ const TransitionsPage: FC = () => {
                             onClick={() => navigate(`${ROUTES.TRANSITIONS}/${transition.id}/`)}
                             >
                             <td>{transition.id}</td>
+                            <td>{statusOptions[transition.status as keyof typeof statusOptions]}</td>
                             <td>{formatDate(transition.creation_date)}</td>
                             <td>{formatDate(transition.formation_date)}</td>
-                            <td>{formatDate(transition.planned_date)}</td>
                             <td>{transition.completion_date}</td>
                             <td>{transition.user}</td>
                             <td>{transition.spacecraft}</td>
-                            <td>{transition.planned_date}</td>
-                            <td>{transition.planned_time}</td>
+                            <td>{formatDate(transition.planned_date)}</td>
+                            <td>{formatTime(transition.planned_time)}</td>
+                            <td>{transition.highest_orbit}</td>
                             </tr>
                         ))}
                         </tbody>
@@ -142,7 +149,7 @@ const TransitionsPage: FC = () => {
             </div>
         </div> 
         {!transitions.length &&
-            <h3 className="text-center mt-5">Отправки не найдены</h3>
+            <h3 className="text-center mt-5">Переходы не найдены</h3>
          }
     </div>
   );

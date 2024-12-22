@@ -59,7 +59,7 @@
   }
   
   .profile-button {
-    background-color: #5b69ca;
+    background-color: black;
     color: #fff;
     padding: 0.5rem;
     border: none;
@@ -70,7 +70,7 @@
   }
   
   .profile-button:hover {
-    background-color: #343d73;
+    background-color: rgb(41, 39, 39);
   }
   
   .profile-right {

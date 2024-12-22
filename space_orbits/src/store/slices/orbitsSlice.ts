@@ -47,7 +47,7 @@ export const getOrbitsByHeight = createAsyncThunk<T_Orbit[], object, { state: Ro
 
     thunkAPI.dispatch(saveTransition({
       draft_transition: response.data.draft_transition,
-      orbits_to_transfer: response.data.orbits_to_tranfer
+      orbits_to_transfer: response.data.orbits_to_transfer
     }));
 
     return response.data.orbits;

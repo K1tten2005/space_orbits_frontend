@@ -14,12 +14,13 @@ import {
     updateTransition
 } from "../../store/slices/transitionsSlice.ts";
 
-export interface Orbit {
+export interface Part {
     id: number;
-    position: number;
+    quantity: number;
     image: string;
-    height: string;
-    short_description: string;
+    part_name: string;
+    specification: string;
+    oem_number: string;
 }
 
 const TransitionPage: FC = () => {
@@ -33,8 +34,21 @@ const TransitionPage: FC = () => {
     
     const [spacecraft, setSpacecraft] = useState<string>(transition?.spacecraft || '');
     const [planned_date, setPlannedDate] = useState<string>(transition?.planned_date || '');
-    const [planned_time, setPlannedTime] = useState<string>(transition?.planned_time || '');
+    const [planned_time, setPlannedTime] = useState<string>("");
     const [highest_orbit, setHighestOrbit] = useState<string >(transition?.highest_orbit? String(transition.highest_orbit) : ''); 
+    const [error, setError] = useState<string | null>(null);
+    
+
+    const handleTimeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const value = e.target.value;
+
+        // Регулярное выражение для формата HH:MM:SS
+        const timeRegex = /^([01]?[0-9]|2[0-3]):([0-5]?[0-9]):([0-5]?[0-9])$/;
+
+        if (timeRegex.test(value) || value === "") {
+            setPlannedTime(value);
+        }
+    };
 
     useEffect(() => {
         if (!isAuthenticated) {
@@ -51,8 +65,8 @@ const TransitionPage: FC = () => {
 
     useEffect(() => {
         setSpacecraft(transition?.spacecraft || '')
-        setPlannedTime(transition?.planned_time || '')
         setPlannedDate(transition?.planned_date || '')
+        setPlannedTime(transition?.planned_time || '')
         setHighestOrbit(transition?.highest_orbit ? String(transition.highest_orbit) : '')
     }, [transition]);
 
@@ -60,14 +74,13 @@ const TransitionPage: FC = () => {
         e.preventDefault();
     
         if (!spacecraft || !planned_date || !planned_time) {
-            alert("Пожалуйста, заполните все обязательные поля.");
+            setError("Пожалуйста, заполните все обязательные поля.");
             return;
         }
     
+        setError(null); // Очистить сообщение об ошибке
         await saveTransition();
-    
         await dispatch(sendDraftTransition());
-    
         navigate(ROUTES.TRANSITIONS);
     };
     
@@ -77,8 +90,8 @@ const TransitionPage: FC = () => {
 
         const data = {
             spacecraft,
-            planned_time,
-            planned_date
+            planned_date,
+            planned_time
         }
 
         await dispatch(updateTransition(data))
@@ -98,8 +111,7 @@ const TransitionPage: FC = () => {
         );
     }
 
-    const isDraft = transition.status == 'draft'
-    const isCompleted = transition.status == 'completed'
+    const isDraft = transition.status == "draft"
 
     return (
         <div className="shipment-container">
@@ -111,9 +123,10 @@ const TransitionPage: FC = () => {
                         <div className="line">
                             <hr></hr>
                         </div>
-                        <h2 className="title">В обработке</h2>
+                        <h2 className="title">Переход</h2>
                 </div>
                 <div className="row">
+                    {error && <div className="error-message">{error}</div>}
                     <div className="col-12">
                     <div className="d-flex justify-content-between">
                         <form className="shipment-form">
@@ -124,7 +137,7 @@ const TransitionPage: FC = () => {
                                 value={spacecraft}
                                 placeholder="Введите название..."
                                 onChange={(e) => setSpacecraft(e.target.value)}
-                                name="spacecraft"
+                                name="storage"
                                 disabled={!isDraft}
                                 />
                             </div>
@@ -144,20 +157,18 @@ const TransitionPage: FC = () => {
                             <div className="shipment-form-group">
                                 <label className="no-wrap">Плановое время:</label>
                                 <input
-                                type="date"
+                                type="text"
                                 id="planned_time"
                                 value={planned_time}
-                                onChange={(e) => setPlannedTime(e.target.value)}
+                                onChange={handleTimeChange}
                                 name="planned_time"
                                 disabled={!isDraft}
                                 />
                             </div>
 
-                            {isCompleted && highest_orbit && (
-                                <>
 
                             <div className="shipment-form-group">
-                                    <label className="no-wrap">Самая высокая орбита: </label>
+                                    <label className="no-wrap">Высочайшая орбита</label>
                                     <input 
                                         type="text"
                                         value={highest_orbit} 
@@ -165,8 +176,6 @@ const TransitionPage: FC = () => {
                                         readOnly 
                                     />
                             </div>
-                                </>
-                            )}
 
                             {isDraft &&
                                 <button className="btn btn-dark" onClick={saveTransition}>

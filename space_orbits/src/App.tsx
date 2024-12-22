@@ -12,6 +12,7 @@ import TransitionPage from './pages/TransitionPage/TransitionPage';
 import { ProfilePage } from './pages/Profile/ProfilePage';
 import BasicNavbar from './components/Navbar/Navbar';
 import TransitionsPage from './pages/TransitionsPage/TransitionsPage';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App: React.FC = () => {
     return (

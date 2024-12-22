@@ -4,7 +4,10 @@ import { useAppDispatch } from "../../store/store.ts";
 import { removeOrbitFromDraftTransition, updateOrbitPosition } from "../../store/slices/transitionsSlice.ts";
 import "./TransitionCard.css";
 
-const defaultImage = './images/default_image.jpg'
+// Для использования Font Awesome:
+import "font-awesome/css/font-awesome.min.css"; 
+
+const defaultImage = './images/default_image.jpg';
 
 interface TransitionCardProps {
   orbit: T_Orbit;
@@ -23,7 +26,6 @@ export const TransitionCard: FC<TransitionCardProps> = ({
       await dispatch(
         updateOrbitPosition({
           orbit_id: orbit.id.toString(),
-
         })
       );
     } catch (error) {
@@ -49,7 +51,7 @@ export const TransitionCard: FC<TransitionCardProps> = ({
       />
       <div className="shipment-part-details">
         <div className="left-shipment-part-details">
-          <h5 className="card-title">{orbit.height} км</h5>
+          <h5 className="card-title">Высота: {orbit.height} км</h5>
           <p className="card-text">
             <strong>Тип:</strong> {orbit.type}
           </p>
@@ -62,7 +64,7 @@ export const TransitionCard: FC<TransitionCardProps> = ({
             className="btn btn-outline-secondary btn-sm"
             onClick={handleDecreasePosition}
           >
-            Уменьшить позицию
+            <i className="fa fa-arrow-down" aria-hidden="true"></i> {/* Иконка стрелки вниз */}
           </button>
           {showRemoveBtn && (
             <button

@@ -1,0 +1,75 @@
+.product-operation-container {
+    background-color: #ffffff; /* Белый фон для карточки */
+    border-radius: 8px; /* Закругленные углы */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Тень для глубины */
+    padding: 20px; /* Внутренние отступы */
+    margin: 20px 0; /* Внешние отступы */
+    min-width: 840px; /* Минимальная ширина карточки */
+}
+
+.main-content {
+    padding-top: 76px; /* Отступ сверху для основного контента */
+  }
+
+.product-image {
+    width: 80%;
+    height: auto;
+    object-fit: contain; /* Обеспечивает, чтобы изображение вписывалось в контейнер без обрезки */
+    border-radius: 4px; /* Закругленные углы для изображения */
+    margin-bottom: 15px; /* Отступ снизу для изображения */
+}
+
+.operation-details-container {
+    margin-top: 20px; /* Отступ сверху для контейнера с деталями операции */
+}
+
+.info {
+    margin-top: 20px; /* Отступ сверху для блока информации */
+}
+
+.info input[type="text"],
+.info textarea {
+    width: 100%; /* Ширина 100% для полей ввода */
+    padding: 10px; /* Внутренние отступы */
+    margin-bottom: 15px; /* Отступ снизу */
+    border: 1px solid #ccc; /* Рамка */
+    border-radius: 4px; /* Закругленные углы */
+}
+
+.info textarea {
+    resize: vertical; /* Позволяет изменять размер только по вертикали */
+}
+
+.truth-table {
+    width: 100%; /* Ширина таблицы 100% */
+    border-collapse: collapse; /* Убирает двойные границы */
+    margin-top: 20px; /* Отступ сверху для таблицы */
+}
+
+.truth-table th,
+.truth-table td {
+    padding: 10px; /* Внутренние отступы для ячеек */
+    border: 1px solid #ddd; /* Рамка для ячеек */
+    text-align: center; /* Центрирование текста */
+}
+
+.truth-table th {
+    background-color: #f2f2f2; /* Фон для заголовков таблицы */
+}
+
+.product-operation-container button {
+    padding: 10px 15px; /* Внутренние отступы для кнопки */
+    color: white; /* Цвет текста кнопки */
+    border: none; /* Убирает рамку */
+    background-color: black; /* Цвет фона кнопки */
+    color: white; /* Цвет текста кнопки */
+    border: none; /* Убирает рамку */
+    border-radius: 8px; /* Закругленные углы */
+    cursor: pointer; /* Указатель при наведении */
+    transition: background-color 0.3s; /* Плавный переход цвета фона */
+    margin-top: 10px; /* Небольшой отступ сверху */
+}
+
+button:hover {
+    background-color: #2c2a2a; /* Цвет фона при наведении */
+}

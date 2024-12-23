@@ -7,6 +7,7 @@ export const ROUTES = {
     TRANSITIONS: "/transitions",
     PAGE403: "/403",
     PAGE404: "/404",
+    EDIT_ORBITS: "/edit"
 }
 export type RouteKeyType = keyof typeof ROUTES;
 export const ROUTE_LABELS: {[key in RouteKeyType]: string} = {
@@ -17,6 +18,7 @@ export const ROUTE_LABELS: {[key in RouteKeyType]: string} = {
     PROFILE: "Профиль",
     TRANSITIONS: "Переходы",
     PAGE403: "Доступ запрещен",
-    PAGE404: "Страница не найдена"
+    PAGE404: "Страница не найдена",
+    EDIT_ORBITS: "Редактировать орбиты"
 }
 

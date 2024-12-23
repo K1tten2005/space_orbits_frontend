@@ -8,6 +8,7 @@ const initialState:T_User = {
     id: -1,
     username: "",
     email: "",
+    is_staff: false,
     password: "",
     is_authenticated: false,
     validation_error: false,
@@ -32,12 +33,12 @@ export const handleLogin = createAsyncThunk<T_User, T_LoginCredentials>(
     }
 );
 
-export const handleRegister = createAsyncThunk<T_User, T_RegisterCredentials>(
-    "register",
-    async function ({ username, email, password, first_name, last_name }: T_RegisterCredentials) {
-        // Логируем данные перед отправкой
-        console.log("Register data to send:", { username, email, password, first_name, last_name });
 
+export const handleRegister = createAsyncThunk<
+    T_User, // Return type
+    T_RegisterCredentials>(
+    'register',
+    async function ({ username, email, password, first_name, last_name }: T_RegisterCredentials) {
         const response = await api.users.usersRegisterCreate({
             username,
             email,
@@ -45,10 +46,8 @@ export const handleRegister = createAsyncThunk<T_User, T_RegisterCredentials>(
             first_name,
             last_name
         }) as unknown as AxiosResponse<T_User>;
-
-        console.log("Response received:", response);
-
         return response.data;
+            
     }
 );
 
@@ -95,6 +94,7 @@ const userReducer = createSlice({
             state.id = action.payload.id;
             state.username = action.payload.username;
             state.email = action.payload.email;
+            state.is_staff = action.payload.is_staff;
             state.password = action.payload.password
             state.first_name = action.payload.first_name
             state.last_name = action.payload.last_name
@@ -104,6 +104,7 @@ const userReducer = createSlice({
             state.id = action.payload.id;
             state.username = action.payload.username;
             state.email = action.payload.email;
+            state.is_staff = action.payload.is_staff;
             state.password = action.payload.password
             state.first_name = action.payload.first_name
             state.last_name = action.payload.last_name

@@ -13,6 +13,8 @@ import { ProfilePage } from './pages/Profile/ProfilePage';
 import BasicNavbar from './components/Navbar/Navbar';
 import TransitionsPage from './pages/TransitionsPage/TransitionsPage';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import EditOrbitsPage from './pages/EditOrbitsPage/EditOrbitsPage';
+import EditOrbitPage from './pages/EditOrbitPage/EditOrbitPage';
 
 const App: React.FC = () => {
     return (
@@ -29,6 +31,8 @@ const App: React.FC = () => {
                 <Route path={`${ROUTES.TRANSITIONS}/:id`} element={<TransitionPage />} />
                 <Route path={ROUTES.TRANSITIONS} element={<TransitionsPage />} />
                 <Route path={ROUTES.PROFILE} element={<ProfilePage />} />
+                <Route path={ROUTES.EDIT_ORBITS} element={<EditOrbitsPage />} />
+                <Route path={`${ROUTES.EDIT_ORBITS}/:id`} element={<EditOrbitPage />} />
             </Routes>
         </BrowserRouter>
     );

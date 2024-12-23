@@ -202,6 +202,12 @@ export interface User {
    * @pattern ^[\w.@+-]+$
    */
   username: string;
+  /**
+   * Staff status
+   * Designates whether the user can log into this admin site.
+   * @default false
+   */
+  is_staff?: boolean;
 }
 
 import type { AxiosInstance, AxiosRequestConfig, AxiosResponse, HeadersDefaults, ResponseType } from "axios";
@@ -707,7 +713,7 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
       transitionId: string,
       data: {
         /** Новый статус перехода ('completed' для завершения, 'rejected' для отклонения) */
-        status: number;
+        status: string;
       },
       params: RequestParams = {},
     ) =>

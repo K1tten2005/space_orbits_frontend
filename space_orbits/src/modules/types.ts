@@ -30,6 +30,7 @@ export type T_Orbit = {
     email: string
     password: string,
     is_authenticated: boolean
+    is_staff: boolean
     validation_error: boolean
     validation_success: boolean
     checked: boolean

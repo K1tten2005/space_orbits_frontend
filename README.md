@@ -11,3 +11,5 @@
 - [PWA (лаб 6)](https://github.com/K1tten2005/space_orbits_frontend/tree/PWA)
 - [GitHub Pages (лаб 6)](https://k1tten2005.github.io/space_orbits_frontend/)
 - [Tauri (лаб 6)](https://github.com/K1tten2005/space_orbits_frontend/tree/Tauri)
+- [UI пользователя (лаб 7)](https://github.com/K1tten2005/space_orbits_frontend/tree/UI)
+- [UI модератора (лаб 8)](https://github.com/K1tten2005/space_orbits_frontend/tree/admin)
